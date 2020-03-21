@@ -1,4 +1,35 @@
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.cache/dein.vim
+
+" dein settings {{{
+if dein#load_state('~/.cache/dein.vim')
+  call dein#begin('~/.cache/dein.vim')
+
+  call dein#add('~/.cache/dein.vim')
+  call dein#add('Shougo/deoplete.nvim')
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+  call dein#add('tomasr/molokai')
+
+  call dein#end()
+  call dein#save_state()
+endif
+" }}}
+
+filetype plugin indent on
+syntax enable
+
 set number
+set splitbelow
+set splitright
+set noequalalways               " all the windows are not automatically made the same size.
+set wildmenu                    " command-line completion operates in an enhanced mode.
+set ruler
+set cursorline
 set clipboard+=unnamedplus
 
 set tabstop=2
@@ -10,6 +41,21 @@ set nowrapscan
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
+nnoremap <C-c> <C-w><C-c>
+
+nnoremap <silent> <ESC><ESC> :<C-u>noh<CR>
+
+inoremap <silent> jj <ESC>:<C-u>w<CR>
+inoremap <C-d> <BS>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
 
 nnoremap <space>.. :<C-u>e ~\AppData\Local\nvim\init.vim<CR>
 nnoremap <space>.g :<C-u>e ~\AppData\Local\nvim\ginit.vim<CR>
+
+" deoplete settings {{{
+let g:deoplete#enable_at_startup = 1
+" call deoplete#custom#option('smart_case', v:true)
+" }}}
