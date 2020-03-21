@@ -4,16 +4,22 @@ endif
 set runtimepath+=~/.cache/dein.vim
 
 " dein settings {{{
-if dein#load_state('~/.cache/dein.vim')
-  call dein#begin('~/.cache/dein.vim')
+let s:dein_dir = expand('~/.cache/dein.vim')
+let s:toml_dir = expand('~/AppData/Local/nvim')
 
-  call dein#add('~/.cache/dein.vim')
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  call dein#add(s:dein_dir)
+
+  call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
+  "call dein#load_toml(s:toml_dir . '/lazy.toml', {'lazy': 1})
+
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  call dein#add('tomasr/molokai')
 
   call dein#end()
   call dein#save_state()
@@ -52,8 +58,8 @@ inoremap <C-l> <Right>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 
-nnoremap <space>.. :<C-u>e ~\AppData\Local\nvim\init.vim<CR>
-nnoremap <space>.g :<C-u>e ~\AppData\Local\nvim\ginit.vim<CR>
+nnoremap <space>.. :<C-u>e ~/AppData/Local/nvim/init.vim<CR>
+nnoremap <space>.g :<C-u>e ~/AppData/Local/nvim/ginit.vim<CR>
 
 " deoplete settings {{{
 let g:deoplete#enable_at_startup = 1
