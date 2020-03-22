@@ -1,19 +1,19 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath+=~/.cache/dein.vim
 
 " dein settings {{{
-let s:dein_dir = expand('~/.cache/dein.vim')
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 let s:toml_dir = expand('~/AppData/Local/nvim')
+
+execute 'set runtimepath+=' . s:dein_repo_dir
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  call dein#add(s:dein_dir)
-
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
-  "call dein#load_toml(s:toml_dir . '/lazy.toml', {'lazy': 1})
+  call dein#load_toml(s:toml_dir . '/lazy.toml', {'lazy': 1})
 
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
@@ -36,6 +36,7 @@ set noequalalways               " all the windows are not automatically made the
 set wildmenu                    " command-line completion operates in an enhanced mode.
 set ruler
 set cursorline
+set virtualedit=block
 set clipboard+=unnamedplus
 
 set tabstop=2
