@@ -42,6 +42,8 @@ set nowrapscan
 nnoremap Y y$
 nnoremap j gj
 nnoremap k gk
+nnoremap <silent> <C-n> :<C-u>tabnext<CR>
+nnoremap <silent> <C-p> :<C-u>tabprev<CR>
 nnoremap <C-c> <C-w><C-c>
 
 nnoremap <silent> <ESC><ESC> :<C-u>noh<CR>
