@@ -15,12 +15,6 @@ if dein#load_state(s:dein_dir)
   call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
   call dein#load_toml(s:toml_dir . '/lazy.toml', {'lazy': 1})
 
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-
   call dein#end()
   call dein#save_state()
 endif
@@ -61,8 +55,3 @@ inoremap <C-j> <Down>
 
 nnoremap <space>.. :<C-u>e ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <space>.g :<C-u>e ~/AppData/Local/nvim/ginit.vim<CR>
-
-" deoplete settings {{{
-let g:deoplete#enable_at_startup = 1
-" call deoplete#custom#option('smart_case', v:true)
-" }}}
