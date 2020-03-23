@@ -24,6 +24,7 @@ filetype plugin indent on
 syntax enable
 
 set number
+set nowrap
 set splitbelow
 set splitright
 set noequalalways               " all the windows are not automatically made the same size.
@@ -37,6 +38,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set smartcase
+set ignorecase
 set nowrapscan
 
 nnoremap Y y$
@@ -55,5 +58,7 @@ inoremap <C-l> <Right>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 
+nnoremap / /\v
+nnoremap ? ?\v
 nnoremap <space>.. :<C-u>e ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <space>.g :<C-u>e ~/AppData/Local/nvim/ginit.vim<CR>
