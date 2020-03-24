@@ -14,8 +14,23 @@ on_ft = ['c', 'cpp']
 depends = ['deoplete']
 
 [[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
+  let s:denite_win_width_percent = 0.85
+  let s:denite_win_height_percent = 0.7
+  
+  " Change denite default options
+  call denite#custom#option('default', {
+      \ 'split': 'floating',
+      \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+      \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+      \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+      \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+      \ })
+
   " Define mappings
   autocmd FileType denite call s:denite_my_settings()
   function! s:denite_my_settings() abort
@@ -38,18 +53,9 @@ hook_add = '''
     imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
   endfunction
 
-  " Change file/rec command.
-  "call denite#custom#var('file/rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
   " For Pt(the platinum searcher)
 	call denite#custom#var('file/rec', 'command', ['pt', '--follow', '--nocolor', '--nogroup', (has('win32') ? '-g:' : '-g='), ''])
 
-  " Ag command on grep source
-  "call denite#custom#var('grep', 'command', ['ag'])
-  "call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-  "call denite#custom#var('grep', 'recursive_opts', [])
-  "call denite#custom#var('grep', 'pattern_opt', [])
-  "call denite#custom#var('grep', 'separator', ['--'])
-  "call denite#custom#var('grep', 'final_opts', [])
   " Pt command on grep source
   call denite#custom#var('grep', 'command', ['pt'])
   call denite#custom#var('grep', 'default_opts', ['-i', '--nogroup', '--nocolor', '--smart-case'])

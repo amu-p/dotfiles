@@ -62,3 +62,6 @@ nnoremap / /\v
 nnoremap ? ?\v
 nnoremap <space>.. :<C-u>e ~/AppData/Local/nvim/init.vim<CR>
 nnoremap <space>.g :<C-u>e ~/AppData/Local/nvim/ginit.vim<CR>
+
+command! CurrDir :lcd %:h
+command! Dm :Denite file_mru
