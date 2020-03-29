@@ -5,7 +5,7 @@ repo = 'Shougo/dein.vim'
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = 'python'
+let g:python3_host_prog = 'c:/python38/python'
 '''
 
 [[plugins]]
@@ -63,6 +63,15 @@ hook_add = '''
   call denite#custom#var('grep', 'pattern_opt', [])
   call denite#custom#var('grep', 'separator', ['--'])
   call denite#custom#var('grep', 'final_opts', [])
+
+  nnoremap [denite] <Nop>
+  nmap <space> [denite]
+
+  " Resume denite grep buffer
+  nnoremap <silent> [denite]g :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+  nnoremap <silent> [denite]n :<C-u>Denite -resume -buffer-name=search-buffer-denite -cursor-pos=+1 -immediately<CR>
+  nnoremap <silent> [denite]p :<C-u>Denite -resume -buffer-name=search-buffer-denite -cursor-pos=-1 -immediately<CR>
 '''
 
 [[plugins]]
@@ -172,3 +181,7 @@ repo = 'tpope/vim-repeat'
 
 [[plugins]]
 repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'pepo-le/win-ime-con.nvim'
+
